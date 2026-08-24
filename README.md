@@ -14,6 +14,19 @@ Bản đóng gói Windows nằm tại `pyinstaller-dist/DataArchive-ServerMonito
 
 Ứng dụng hỗ trợ đăng nhập SSH bằng mật khẩu của `huy1111`, `servermonitor`, `thacsikhai`, hoặc SSH key. Mật khẩu/passphrase chỉ giữ trong bộ nhớ; PIN cục bộ được lưu hash tại `%APPDATA%\ServerMonitorPySide6\security.json`.
 
+## Cấu trúc dự án
+
+```text
+server_monitor_pyside6.py        # Điểm khởi động và cửa sổ chính
+dataarchive/
+  config.py                      # Cấu hình server, hằng số, parser và tiện ích
+  workers.py                     # Tác vụ nền Qt cho SSH/SFTP và PowerShell
+requirements-pyside6.txt         # Dependency Python
+DataArchive-ServerMonitor-1.1.1.spec  # Cấu hình đóng gói PyInstaller
+```
+
+Các phần giao diện, dịch vụ SSH/SFTP và tác vụ nền được giữ tách ranh giới để có thể tiếp tục tách thành module riêng mà không làm thay đổi luồng ứng dụng.
+
 ## Tải tệp lên server
 
 Chọn thư mục đích trong danh sách, sau đó chọn **Tải tệp lên**, chọn tối đa 20 tệp (mỗi tệp tối đa 2 GB) rồi nhập mật khẩu SSH để xác nhận. Bộ chọn có nhóm **Tệp nén** cho `.zip`, `.zipx`, `.rar`, `.7z`, `.tar`, `.gz`, `.bz2`, `.xz`, `.zst`, `.cab` và các biến thể phổ biến. App tải qua SFTP vào `/data/uploads` hoặc thư mục con đã chọn và tự tạo thư mục này nếu chưa có. App thêm thời gian vào tên tệp trên server để không ghi đè dữ liệu có sẵn. Nút **Hủy** trong popup sẽ hủy thao tác trước khi bất kỳ tệp nào được tải lên.

@@ -1,0 +1,21 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}"
+  ],
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.exclude": [
+    "**/.git",
+    "**/.venv",
+    "**/__pycache__",
+    "**/pyinstaller-dist",
+    "**/pyinstaller-build*"
+  ],
+  "files.exclude": {
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/pyinstaller-dist": true,
+    "**/pyinstaller-build*": true
+  }
+}
